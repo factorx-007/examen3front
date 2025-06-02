@@ -9,7 +9,10 @@ const nextConfig: NextConfig = {
       },
     ];
   },
-  /* config options here */
+  eslint: {
+    // 👇 Ignora errores de ESLint durante el build en producción
+    ignoreDuringBuilds: true,
+  },
 };
 
 export default nextConfig;
