@@ -1,103 +1,188 @@
-import Image from "next/image";
+'use client';
+
+import { motion } from 'framer-motion';
+import Link from 'next/link';
+import Image from 'next/image';
+import { ArrowRightIcon, ShoppingBagIcon, StarIcon, ShieldCheckIcon, TruckIcon } from '@heroicons/react/24/outline';
+
+const featuredProducts = [
+  {
+    id: 1,
+    name: 'Reloj de Lujo Dorado',
+    price: '2,499',
+    category: 'Relojes',
+    image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80',
+  },
+  {
+    id: 2,
+    name: 'Collar de Diamantes',
+    price: '3,799',
+    category: 'Joyas',
+    image: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80',
+  },
+  {
+    id: 3,
+    name: 'Bolso de Cuero Premium',
+    price: '1,899',
+    category: 'Accesorios',
+    image: 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80',
+  },
+];
+
+const features = [
+  {
+    name: 'Envío Gratis',
+    description: 'En todos los pedidos superiores a $500',
+    icon: TruckIcon,
+  },
+  {
+    name: 'Garantía',
+    description: '2 años de garantía en todos los productos',
+    icon: ShieldCheckIcon,
+  },
+  {
+    name: 'Calidad Premium',
+    description: 'Productos seleccionados meticulosamente',
+    icon: StarIcon,
+  },
+];
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="container mx-auto bg-white">
+      {/* Hero Section */}
+      <div className="relative bg-gray-900 overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-r from-amber-900 to-amber-800 opacity-75"></div>
+          <Image
+            src="/hover.jpg"
+            alt="Fondo de lujo"
+            fill
+            className="object-cover"
+            priority
+          />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        <div className="relative max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center"
+          >
+            <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
+              Descubre el lujo en cada detalle
+            </h1>
+            <p className="mt-6 max-w-lg mx-auto text-xl text-amber-400">
+              Productos exclusivos seleccionados para los más exigentes. Calidad y elegancia en cada pieza.
+            </p>
+            <div className="mt-10 flex justify-center space-x-4">
+              <Link
+                href="/products"
+                className="inline-flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-full text-amber-900 bg-amber-400 hover:bg-amber-300 shadow-lg hover:shadow-amber-500/30 transition-all duration-300"
+              >
+                Ver Colección
+                <ArrowRightIcon className="ml-2 h-5 w-5" />
+              </Link>
+              <Link
+                href="/about"
+                className="inline-flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-full text-white bg-transparent border-amber-300 hover:bg-white/10 transition-colors duration-300"
+              >
+                Conócenos
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Características */}
+      <div className="bg-white py-16 sm:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="lg:text-center">
+            <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+              Por qué elegirnos
+            </h2>
+            <p className="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
+              En VendeChamito nos esforzamos por ofrecerte la mejor experiencia de compra.
+            </p>
+          </div>
+
+          <div className="mt-20">
+            <div className="grid grid-cols-1 gap-12 md:grid-cols-3">
+              {features.map((feature, idx) => (
+                <motion.div
+                  key={feature.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 * idx }}
+                  viewport={{ once: true }}
+                  className="text-center"
+                >
+                  <div className="flex items-center justify-center h-16 w-16 rounded-full bg-amber-100 text-amber-600 mx-auto">
+                    <feature.icon className="h-8 w-8" aria-hidden="true" />
+                  </div>
+                  <h3 className="mt-6 text-lg font-medium text-gray-900">{feature.name}</h3>
+                  <p className="mt-2 text-base text-gray-500">{feature.description}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* CTA Section */}
+      <div className="bg-amber-50">
+        <div className="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8 lg:flex lg:items-center lg:justify-between">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="lg:w-1/2"
+          >
+            <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+              <span className="block">¿Listo para descubrir algo extraordinario?</span>
+              <span className="block text-amber-600">Únete a nuestra comunidad exclusiva.</span>
+            </h2>
+            <p className="mt-4 text-lg text-gray-600">
+              Suscríbete a nuestro boletín y sé el primero en conocer nuestras nuevas colecciones y ofertas especiales.
+            </p>
+          </motion.div>
+          <motion.div 
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="mt-8 lg:mt-0 lg:ml-8"
+          >
+            <form className="sm:flex">
+              <label htmlFor="email-address" className="sr-only">
+                Correo electrónico
+              </label>
+              <input
+                id="email-address"
+                name="email"
+                type="email"
+                autoComplete="email"
+                required
+                className="w-full px-5 py-3 border border-gray-300 shadow-sm placeholder-gray-400 focus:ring-amber-500 focus:border-amber-500 sm:max-w-xs rounded-md"
+                placeholder="Ingresa tu correo electrónico"
+              />
+              <div className="mt-3 rounded-md shadow sm:mt-0 sm:ml-3 sm:flex-shrink-0">
+                <button
+                  type="submit"
+                  className="w-full flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-amber-600 hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 transition-colors duration-200"
+                >
+                  Suscribirse
+                </button>
+              </div>
+            </form>
+            <p className="mt-3 text-sm text-gray-500">
+              Nos preocupamos por la protección de tus datos. Lee nuestra{' '}
+              <a href="#" className="text-amber-600 font-medium hover:underline">
+                Política de Privacidad
+              </a>.
+            </p>
+          </motion.div>
+        </div>
+      </div>
     </div>
   );
 }

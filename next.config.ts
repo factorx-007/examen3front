@@ -13,6 +13,9 @@ const nextConfig: NextConfig = {
     // 👇 Ignora errores de ESLint durante el build en producción
     ignoreDuringBuilds: true,
   },
+  images: {
+    domains: ['images.unsplash.com'],
+  },
 };
 
 export default nextConfig;
