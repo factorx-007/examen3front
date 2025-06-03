@@ -35,10 +35,15 @@ export default function AdminPage() {
   const handleDelete = async (id: number) => {
     if (confirm('¿Estás seguro de eliminar este producto?')) {
       try {
-        await axios.delete(`/api/products/${id}`);
+        const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'https://examen3awa.onrender.com';
+        const cleanBaseUrl = baseUrl.endsWith('/') ? baseUrl.slice(0, -1) : baseUrl;
+        const apiUrl = `${cleanBaseUrl}${cleanBaseUrl.includes('/api/products') ? '' : '/api/products'}/${id}`;
+        
+        await axios.delete(apiUrl);
         setProducts(products.filter(p => p.id !== id));
       } catch (error) {
         console.error('Error deleting product:', error);
+        alert('No se pudo eliminar el producto');
       }
     }
   };
@@ -82,17 +87,7 @@ export default function AdminPage() {
                   console.error('Error en redirección:', error);
                 }
               }}
-              onDelete={async () => {
-                if (confirm('¿Estás seguro de eliminar este producto?')) {
-                  try {
-                    await axios.delete(`/api/products/${product.id}`);
-                    setProducts(products.filter(p => p.id !== product.id));
-                  } catch (error) {
-                    console.error('Error al eliminar el producto:', error);
-                    alert('No se pudo eliminar el producto');
-                  }
-                }
-              }}
+              onDelete={() => handleDelete(product.id)}
             />
           ))}
         </div>
