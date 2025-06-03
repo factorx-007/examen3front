@@ -92,9 +92,17 @@ function AdminContent() {
         // Actualizar el estado local eliminando el producto
         setProducts(products.filter(p => p.id !== id));
         alert('Producto eliminado correctamente');
-      } catch (error) {
+      } catch (error: unknown) {
         console.error('Error al eliminar el producto:', error);
-        alert(`Error al eliminar el producto: ${error.response?.data?.message || error.message}`);
+        let errorMessage = 'Error desconocido al eliminar el producto';
+        
+        if (axios.isAxiosError(error)) {
+          errorMessage = error.response?.data?.message || error.message;
+        } else if (error instanceof Error) {
+          errorMessage = error.message;
+        }
+        
+        alert(`Error al eliminar el producto: ${errorMessage}`);
       }
     }
   };
