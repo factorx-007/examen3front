@@ -6,7 +6,7 @@ import { Product } from '../types';
 interface AdminProductCardProps {
   product: Product;
   onEdit: () => void;
-  onDelete: () => void;
+  onDelete: (id: number) => void;
 }
 
 const cardVariants = {
@@ -61,7 +61,7 @@ export const AdminProductCard = ({ product, onEdit, onDelete }: AdminProductCard
             <PencilIcon className="w-4 h-4" />
           </motion.button>
           <motion.button
-            onClick={(e) => { e.stopPropagation(); onDelete(); }}
+            onClick={(e) => { e.stopPropagation(); onDelete(product.id); }}
             className="p-2 bg-red-500 bg-opacity-90 text-white rounded-full shadow-lg hover:bg-red-600 transition-colors"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
